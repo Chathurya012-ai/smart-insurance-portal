@@ -1,1 +1,10 @@
-// Placeholder for backend/src/main/java/com/insuranceportal/repo/UserRepository.java
+package com.insuranceportal.repo;
+
+import com.insuranceportal.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByUsername(String username);
+}
