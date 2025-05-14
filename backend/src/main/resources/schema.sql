@@ -1,0 +1,1 @@
+// Placeholder for backend/src/main/resources/schema.sql

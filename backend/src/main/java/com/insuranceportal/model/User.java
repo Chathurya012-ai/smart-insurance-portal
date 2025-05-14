@@ -1,0 +1,1 @@
+// Placeholder for backend/src/main/java/com/insuranceportal/model/User.java
