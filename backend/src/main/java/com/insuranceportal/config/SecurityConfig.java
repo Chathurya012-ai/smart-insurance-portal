@@ -14,25 +14,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()  // ✅ Make /signup & /login public
+                        .requestMatchers("/api/auth/**").permitAll()  // ✅ Public access to signup/login
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults()); // ✅ Required for simple REST auth
+                .httpBasic(Customizer.withDefaults());  // Enables HTTP basic for testing
 
         return http.build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // ✅ Required for AuthService
+        return new BCryptPasswordEncoder();  // Used in AuthService
     }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager(); // ✅ Needed for login
+        return config.getAuthenticationManager();
     }
 }
