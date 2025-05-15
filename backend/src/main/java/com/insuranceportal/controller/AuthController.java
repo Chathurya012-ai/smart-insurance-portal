@@ -16,7 +16,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
-        System.out.println("📩 SIGNUP REQUEST: " + user.getUsername());
+        System.out.println("SIGNUP CALLED WITH: " + user);
         return authService.registerUser(user);
     }
 
